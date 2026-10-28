@@ -3205,17 +3205,26 @@ function processSelectedInvoices(action = 'print') {
     let currentPendingSales = null;
 
 // 1. Generate Kode Unik untuk Sales
+// 1. Generate Kode Unik yang Berubah Berdasarkan Tanggal Hari Ini
 function generateRequestCode(salesId) {
     let cleanId = salesId.trim().toUpperCase();
+    
+    // Mengambil tanggal hari ini (format YYYY-MM-DD) agar kodenya dinamis berubah setiap hari
+    let today = new Date();
+    let dateStr = today.toISOString().split('T')[0]; 
+    
+    // Menggabungkan ID Sales dengan Tanggal Hari Ini
+    let combined = cleanId + "-" + dateStr;
+    
     let hash = 0;
-    for (let i = 0; i < cleanId.length; i++) {
-        hash = (hash << 5) - hash + cleanId.charCodeAt(i);
+    for (let i = 0; i < combined.length; i++) {
+        hash = (hash << 5) - hash + combined.charCodeAt(i);
         hash |= 0;
     }
+    
     let codeStr = Math.abs(hash).toString(36).toUpperCase().padStart(4, 'X').slice(-4);
     return `${cleanId}-${codeStr}`;
 }
-
 // 2. Rumus Matematika Pencocokan Kode Aktivasi (Admin & Sales)
 function calculateActivationCode(reqCode) {
     let clean = reqCode.trim().toUpperCase().replace(/[^A-Z0-9]/g, '');
