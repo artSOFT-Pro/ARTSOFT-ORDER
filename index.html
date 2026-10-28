@@ -1674,8 +1674,9 @@
             if (found && found.expiryDate) {
                 let todayStr = new Date().toISOString().split('T')[0];
                 if (todayStr > found.expiryDate) {
-                    artAlert(`Masa aktif untuk Sales ${found.name} (${savedSalesId}) telah habis pada ${found.expiryDate}. Silakan hubungi Admin.`);
-                    localStorage.removeItem('savedSalesId'); showLogin(); return;
+                      showLogin();
+                    openActivationModal(found); // Membuka modal Request Code otomatis
+                        return;
                 }
                 
                 let diffTime = new Date(found.expiryDate) - new Date(todayStr);
@@ -1699,7 +1700,10 @@
             if (!found) { artAlert("Akses Ditolak! Kode Sales belum terdaftar."); return; }
             if (found.expiryDate) {
                 let todayStr = new Date().toISOString().split('T')[0];
-                if (todayStr > found.expiryDate) { artAlert(`Akses Ditolak! Masa aktif akun ini telah berakhir pada tanggal ${found.expiryDate}.`); return; }
+                if (todayStr > found.expiryDate) { 
+    openActivationModal(found); // Membuka modal Request Code otomatis saat tombol login ditekan
+    return; 
+}
                 
                 let diffTime = new Date(found.expiryDate) - new Date(todayStr);
                 let diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
