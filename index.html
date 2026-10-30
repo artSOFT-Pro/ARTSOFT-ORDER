@@ -789,7 +789,7 @@
         
         document.getElementById('inputQty1').value = 0;
         document.getElementById('inputQty2').value = 0;
-        document.getElementById('inputQty3').value = totalPcs;
+        document.getElementById('inputQty3').value = 0;
         // Dibiarkan tetap di Qty3 sampai kursor keluar atau dienter.
     }
 
@@ -1999,7 +1999,7 @@
         document.getElementById('lblSatuan3').innerText = uom3;
         $("#inputConv1").val(item.conv1 || 1); $("#inputConv2").val(item.conv2 || 1);
         $("#inputUom1").val(uom1); $("#inputUom2").val(uom2); $("#inputUom3").val(uom3);
-        $("#inputQty1").val(0); $("#inputQty2").val(0); $("#inputQty3").val(1);
+        $("#inputQty1").val(0); $("#inputQty2").val(0); $("#inputQty3").val(0);
         document.getElementById('lblSatuanBonus').innerText = uom3;
         $("#inputBonus").val(0);
         calculateCurrentSubtotal();
@@ -2265,7 +2265,7 @@
         document.getElementById('inputDiscRp').value = parseFloat(item.discRp || 0).toLocaleString('id-ID');
         
         document.getElementById('inputHarga').value = parseFloat(item.price).toLocaleString('id-ID');
-        document.getElementById('inputSubtotal').value = parseFloat(item.subtotal).toLocaleString('id-ID');
+        document.getElementById('inputSubtotal').value = 0
         
         currentSessionItems.splice(index, 1); renderCurrentSessionItems();
         document.getElementById('inputQty3').focus(); document.getElementById('inputQty3').select();
