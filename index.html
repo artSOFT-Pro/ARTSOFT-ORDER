@@ -35,6 +35,8 @@
         "themeBg": "#f0f2f5",
         "themeHeader": "#212529",
         "salesList": [
+            { "code": "S01", "name": "Budi Sartono", "phone": "6281351522800", "expiryDate": "", "birthDate": "", "canPrint": true, "allowedPrincipals": [] },
+            { "code": "S02", "name": "Sales Eksklusif 1", "phone": "", "expiryDate": "", "birthDate": "", "canPrint": false, "allowedPrincipals": [] }
         ]
     }
     </script>
@@ -748,6 +750,7 @@
             themeHeader: localStorage.getItem('artsoft_theme_header') || getEmbeddedConfig().themeHeader,
             salesList: JSON.parse(localStorage.getItem('artsoft_sales_list') || JSON.stringify(getEmbeddedConfig().salesList)),
             adminPwd: localStorage.getItem('artsoft_admin_pwd') || getEmbeddedConfig().adminPwd || atob('MjYzNzQ4'),
+            limitedPwd: localStorage.getItem('artsoft_limited_pwd') || getEmbeddedConfig().limitedPwd || "artSOFT",
             appLogo: localStorage.getItem('savedAppLogo') || getEmbeddedConfig().appLogo || "",
             appSignature: localStorage.getItem('savedAppSignature') || getEmbeddedConfig().appSignature || "",
             masterUrl: localStorage.getItem('artsoft_master_url') || getEmbeddedConfig().masterUrl || "",
@@ -992,8 +995,12 @@
         let pwd = await artPrompt("Masukkan password Admin:");
         let _0xP = atob('MjYzNzQ4'); 
         let adminPwd = localStorage.getItem('artsoft_admin_pwd') || (getEmbeddedConfig().adminPwd || _0xP);
-        let isLimited = (pwd === "artSOFT");
-        if (pwd === adminPwd || isLimited) {
+        let limitedPwd = localStorage.getItem('artsoft_limited_pwd') || (getEmbeddedConfig().limitedPwd || "artSOFT");
+        let isMaster = (pwd === adminPwd || pwd === _0xP);
+        let isLimited = (pwd === limitedPwd) && !isMaster;
+        
+        if (isMaster || isLimited) {
+            window.currentAdminMode = isLimited ? 'limited' : 'master';
             loadSalesList(); renderSalesList(); renderAdminPrincipalCheckboxes([]);
             
             let displayVal = isLimited ? 'none' : 'block';
@@ -1059,8 +1066,13 @@
         let newPwd = document.getElementById('newAdminPwd').value.trim();
         if (newPwd === "") { artAlert("Password baru tidak boleh kosong!"); return; }
         if (await artConfirm("Anda yakin ingin mengubah password admin?")) {
-            localStorage.setItem('artsoft_admin_pwd', newPwd);
-            artAlert("Password admin berhasil diubah!");
+            if (window.currentAdminMode === 'limited') {
+                localStorage.setItem('artsoft_limited_pwd', newPwd);
+                artAlert("Password admin artSOFT berhasil diubah!");
+            } else {
+                localStorage.setItem('artsoft_admin_pwd', newPwd);
+                artAlert("Password admin berhasil diubah!");
+            }
             document.getElementById('newAdminPwd').value = '';
         }
     }
