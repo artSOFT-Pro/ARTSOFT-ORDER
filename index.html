@@ -3392,6 +3392,15 @@ function adminGenerateActivationCode() {
     resEl.style.display = 'block';
     resEl.innerHTML = `Request: <b>${req.toUpperCase()}</b><br>🔑 Kode Aktivasi Resmi: <span class="fs-4 text-warning fw-bold text-mono d-block mt-1">${actCode}</span>`;
 }
+ // === TAMBAHKAN KODE OTOMATIS DI SINI ===
+document.addEventListener("DOMContentLoaded", function() {
+    document.querySelectorAll('input, textarea').forEach(element => {
+        element.setAttribute('autocomplete', 'off');
+        element.setAttribute('autocorrect', 'off');
+        element.setAttribute('autocapitalize', 'off');
+        element.setAttribute('spellcheck', 'false');
+    });
+});
 </script>
     <script>
     window.addEventListener('load', function() {
