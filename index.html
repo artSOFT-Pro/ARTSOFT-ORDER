@@ -1337,6 +1337,8 @@
             let bdayText = s.birthDate ? `<br><small class="text-warning fw-bold">🎉 Ulang Tahun: ${s.birthDate}</small>` : '';
             let printCheck = s.canPrint ? "checked" : "";
             let princListText = (s.allowedPrincipals && s.allowedPrincipals.length > 0) ? `<br><small class="text-primary">Principal: ${s.allowedPrincipals.join(', ')}</small>` : `<br><small class="text-muted">Principal: Semua (Tanpa Batas)</small>`;
+            let isLimited = (window.currentAdminMode === 'limited');
+            let displayVal = isLimited ? 'none' : 'inline-block';
             
             li.innerHTML = `<div><span><b>${s.code}</b> - ${s.name}</span><br><small class="text-muted">📞 ${s.phone || 'Tanpa No HP'}</small>${expiryText}${bdayText}${princListText}
                 <div class="form-check mt-1">
@@ -1347,7 +1349,7 @@
             <div class="d-flex gap-1 flex-column align-items-end">
                 <div class="d-flex gap-1">
                     <button class="btn btn-sm btn-outline-primary py-0 px-2" onclick="openEditSalesModal(${idx})" title="Edit Sales Keseluruhan">Edit</button>
-                    <button class="btn btn-sm btn-outline-danger py-0 px-2 fw-bold" onclick="deleteSales(${idx})">X</button>
+                    <button class="btn btn-sm btn-outline-danger py-0 px-2 fw-bold" style="display: ${displayVal};" onclick="deleteSales(${idx})">X</button>
                 </div>
             </div>`;
             container.appendChild(li);
