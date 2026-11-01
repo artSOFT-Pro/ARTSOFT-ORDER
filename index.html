@@ -40,6 +40,14 @@
     </script>
 
     <style>
+        #custom-splash {
+        position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+        background-color: #0D111D; background-image: url('./icon4.png');
+        background-size: cover; background-position: center; background-repeat: no-repeat;
+        z-index: 99999; transition: opacity 0.8s ease-out;
+    }
+    .hide-splash { opacity: 0; pointer-events: none; }
+        
         body { background-color: #f0f2f5; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 0.9rem; padding-bottom: 70px; }
         .card { border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border: none; margin-bottom: 15px; }
         .card-header { font-weight: bold; border-top-left-radius: 10px !important; border-top-right-radius: 10px !important; padding: 10px 15px; transition: background 0.3s ease; }
@@ -64,6 +72,7 @@
     </style>
 </head>
 <body>
+<div id="custom-splash"></div>
 <!-- MODAL AKTIVASI EXPIRED (SISI SALES) - TARUH DI SINI -->
 <div id="activationModal" style="display:none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 10650; justify-content: center; align-items: center; padding: 20px; backdrop-filter: blur(4px);">
     <div style="background: white; border-radius: 16px; width: 100%; max-width: 360px; padding: 25px 20px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.4); animation: popIn 0.3s ease-out;">
@@ -3384,5 +3393,16 @@ function adminGenerateActivationCode() {
     resEl.innerHTML = `Request: <b>${req.toUpperCase()}</b><br>🔑 Kode Aktivasi Resmi: <span class="fs-4 text-warning fw-bold text-mono d-block mt-1">${actCode}</span>`;
 }
 </script>
+    <script>
+    window.addEventListener('load', function() {
+      setTimeout(function() {
+        const splash = document.getElementById('custom-splash');
+        if (splash) {
+          splash.classList.add('hide-splash');
+          setTimeout(() => splash.remove(), 800);
+        }
+      }, 2500); // Angka 2500 adalah durasi 2,5 detik. Sesuaikan jika perlu.
+    });
+  </script>
 </body>
 </html>
