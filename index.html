@@ -1842,13 +1842,16 @@
             localStorage.removeItem('artsoft_active_tab'); 
             localStorage.removeItem('artsoft_active_time');
             
-            window.opener = null;
-            window.open('', '_self');
-            try { window.close(); } catch(e) {}
-            
-            setTimeout(() => {
-                window.location.replace(window.location.pathname + window.location.search);
-            }, 500);
+           if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true) {
+                // Jika dibuka via PWA (Install HP)
+                window.close();
+                window.location.href = "about:blank"; // Layar kosong agar tidak gantung
+            } else {
+                // Jika dibuka via Web Browser biasa
+                setTimeout(() => {
+                    window.location.replace(window.location.pathname + window.location.search);
+                }, 500);
+            }
         }
     }
 
