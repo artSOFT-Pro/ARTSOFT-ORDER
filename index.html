@@ -1842,16 +1842,25 @@
             localStorage.removeItem('artsoft_active_tab'); 
             localStorage.removeItem('artsoft_active_time');
             
-           if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true) {
-                // Jika dibuka via PWA (Install HP)
+          if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true) {
+                // Jika dibuka sebagai PWA (di-install ke HP)
                 window.close();
-                window.location.href = "about:blank"; // Layar kosong agar tidak gantung
-            } else {
-                // Jika dibuka via Web Browser biasa
-                setTimeout(() => {
-                    window.location.replace(window.location.pathname + window.location.search);
-                }, 500);
+                window.location.href = "about:blank"; 
+                return;
             }
+            // -----------------------------
+
+            try { window.close(); } catch (e) { console.error(e); }
+            setTimeout(() => {
+                document.body.innerHTML = `
+                    <div style="display:flex; justify-content:center; align-items:center; height:100vh; background:#212529; color:white; font-family:sans-serif; text-align:center;">
+                        <div>
+                            <h3>Aplikasi Telah Ditutup</h3>
+                            <p style="color:#aaa; font-size:0.9rem;">Anda dapat menutup tab atau jendela browser ini.</p>
+                        </div>
+                    </div>
+                `;
+            }, 200);
         }
     }
 
