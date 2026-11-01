@@ -506,7 +506,7 @@
                         <label class="form-label mb-0 text-center fw-bold" style="font-size: 0.7rem; color: #94a3b8; width: 45px; margin-right: 48px;">TOP</label>
                     </div>
                     <div class="input-group input-group-sm mb-1 shadow-sm" style="border-radius: 8px; border: 1px solid #cbd5e1; background: #ffffff; overflow: hidden;">
-                        <input type="text" id="custSearch" class="form-control form-control-sm border-0" style="box-shadow: none; background: transparent; font-weight: 500; color: #1e293b;" placeholder="Ketik nama / kode toko..." required autocomplete="off">
+                       <input type="text" id="custSearch" class="form-control form-control-sm border-0" style="box-shadow: none; background: transparent; font-weight: 500; color: #1e293b;" placeholder="Ketik nama / kode toko..." required autocomplete="off" oninvalid="this.setCustomValidity('Nama toko di isi')" oninput="this.setCustomValidity('')">
                         <input type="number" id="inputTop" class="form-control form-control-sm border-0 text-center fw-bold" style="max-width: 45px; padding: 0 4px; box-shadow: none; background: transparent; color: #3b82f6;" value="0" onchange="generateOrderNo()" title="Term Of Payment (0 = CASH)">
                         <button class="btn border-0 px-3 d-flex align-items-center justify-content-center" type="button" onclick="triggerScanTokoGps()" title="Scan Lokasi GPS" style="background: #f8fafc; border-left: 1px solid #f1f5f9 !important;">
                             <i class="fas fa-map-marker-alt" style="color: #cbd5e1; font-size: 1.1rem; transition: color 0.3s ease;" onmouseover="this.style.color='#3b82f6'" onmouseout="this.style.color='#cbd5e1'"></i>
