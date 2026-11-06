@@ -25,8 +25,8 @@
     <!-- EMBEDDED PERMANENT CONFIG - MELEKAT UTUH DI DALAM FILE -->
     <script id="embeddedAdminConfig" type="application/json">
     {
-        "appName": "ARTONS'O DESIGN",
-        "appAddress": "CREATIVE SOFTEARE SOLUTIONS",
+        "appName": "NAMA PERUSAHAAN, PT",
+        "appAddress": "ALAMAT PERUSAHAAN",
         "adminWa": "6281351522800",
         "invoiceNote": "• Barangkali ada retur/selisih harap dikonfirmasi max 1x24 jam.\n• Terima kasih atas kepercayaan dan kerja sama Anda.",
         "motivationMsg": "Selamat bekerja, {nama}! Tetap semangat dan pantang menyerah.",
@@ -185,7 +185,7 @@
         <div id="sectionProfilPerusahaan">
         <h6 class="fw-bold text-dark mb-1" style="font-size: 0.85rem;">🏢 Profil Perusahaan</h6>
         <div class="mb-3 border-bottom pb-3">
-            <label class="form-label text-primary" style="font-size: 0.75rem;">LOGO</label>
+            <label class="form-label text-primary" style="font-size: 0.75rem;">Logo</label>
             <input type="file" class="form-control form-control-sm mb-2" accept="image/*" onchange="changeCompanyLogo(this)">
             <input type="text" id="adminCompName" class="form-control form-control-sm mb-2" placeholder="Nama Perusahaan">
             <input type="text" id="adminCompAddr" class="form-control form-control-sm mb-2" placeholder="Alamat Perusahaan">
@@ -360,7 +360,7 @@
     <div class="card shadow-lg border-0 p-3 text-center" style="width: 100%; max-width: 420px; border-radius: 16px; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px);">
         <div class="card-body p-3">
             <div class="mb-3 d-flex justify-content-center align-items-center gap-3">
-                <img src="https://via.placeholder.com/200x60?text=LOGO" id="loginCompanyLogo" class="img-fluid" style="max-height: 50px; object-fit: contain;" title="LOGO">
+                <img src="https://via.placeholder.com/200x60?text=Logo" id="loginCompanyLogo" class="img-fluid" style="max-height: 50px; object-fit: contain;" title="Logo">
                 <div>
                     <h5 id="loginCompanyName" class="fw-bold text-dark m-0 text-center" style="font-size: 1.1rem;">NAMA PERUSAHAAN, PT</h5>
                     <div id="loginCompanyAddress" class="text-muted text-center mt-1" style="font-size: 0.8rem; font-weight: 500;">ALAMAT PERUSAHAAN</div>
@@ -393,7 +393,7 @@
 <!-- ================= MAIN APP =================== -->
 <div id="mainApp" class="container-fluid pt-3" style="display: none;">
     <div class="mb-3 p-3 bg-white rounded shadow-sm border d-flex justify-content-center align-items-center gap-3" style="overflow: hidden;">
-        <img src="https://via.placeholder.com/200x60?text=LOGO" id="companyLogo" class="img-fluid" style="max-height: 50px; object-fit: contain;" title="LOGO">
+        <img src="https://via.placeholder.com/200x60?text=Logo" id="companyLogo" class="img-fluid" style="max-height: 50px; object-fit: contain;" title="Logo">
         <div>
             <h5 id="companyName" class="fw-bold text-dark m-0 text-center">NAMA PERUSAHAAN, PT</h5>
             <div id="companyAddress" class="text-muted text-center mt-1" style="font-size: 0.75rem; font-weight: 500;">ALAMAT PERUSAHAAN</div>
@@ -503,13 +503,21 @@
                 <div class="mb-3 border-bottom pb-3 mt-3">
                     <div class="d-flex justify-content-between align-items-end mb-1">
                         <label class="form-label mb-0" style="color: #475569; font-weight: 600;">Cari Toko / Customer</label>
-                        <label class="form-label mb-0 text-center fw-bold" style="font-size: 0.7rem; color: #94a3b8; width: 45px; margin-right: 48px;">TOP</label>
+                        <div class="d-flex align-items-center gap-1">
+                            <label class="form-label mb-0 fw-bold" style="font-size: 0.75rem; color: #64748b;">TOP:</label>
+                            <input type="number" id="inputTop" class="form-control form-control-sm text-center fw-bold" style="width: 50px; height: 26px; padding: 0 4px; border: 1px solid #cbd5e1; border-radius: 4px; color: #3b82f6; box-shadow: none;" value="0" onchange="generateOrderNo()">
+                            <button type="button" class="btn btn-sm btn-success fw-bold d-flex align-items-center justify-content-center shadow-sm" style="height: 26px; padding: 0 10px; font-size: 0.75rem; border-radius: 4px; background: linear-gradient(135deg, #10b981, #059669); border: none;" onclick="document.getElementById('inputTop').value=0; generateOrderNo();" title="Set CASH (0 Hari)">
+                                💵 CASH
+                            </button>
+                        </div>
                     </div>
                     <div class="input-group input-group-sm mb-1 shadow-sm" style="border-radius: 8px; border: 1px solid #cbd5e1; background: #ffffff; overflow: hidden;">
-                       <input type="text" id="custSearch" class="form-control form-control-sm border-0" style="box-shadow: none; background: transparent; font-weight: 500; color: #1e293b;" placeholder="Ketik nama / kode toko..." required autocomplete="off" oninvalid="this.setCustomValidity('Isi dulu nama toko ya ...')" oninput="this.setCustomValidity('')">
-                        <input type="number" id="inputTop" class="form-control form-control-sm border-0 text-center fw-bold" style="max-width: 45px; padding: 0 4px; box-shadow: none; background: transparent; color: #3b82f6;" value="0" onchange="generateOrderNo()" title="Term Of Payment (0 = CASH)">
+                        <input type="text" id="custSearch" class="form-control form-control-sm border-0" style="box-shadow: none; background: transparent; font-weight: 500; color: #1e293b;" placeholder="Ketik nama / kode toko..." required autocomplete="off" oninvalid="this.setCustomValidity('Wajib isi nama toko ...')" oninput="this.setCustomValidity('')">
                         <button class="btn border-0 px-3 d-flex align-items-center justify-content-center" type="button" onclick="triggerScanTokoGps()" title="Scan Lokasi GPS" style="background: #f8fafc; border-left: 1px solid #f1f5f9 !important;">
                             <i class="fas fa-map-marker-alt" style="color: #cbd5e1; font-size: 1.1rem; transition: color 0.3s ease;" onmouseover="this.style.color='#3b82f6'" onmouseout="this.style.color='#cbd5e1'"></i>
+                        </button>
+                        <button class="btn border-0 px-3 d-flex align-items-center justify-content-center" type="button" onclick="bukaFormNOO()" title="Form NOO (New Outlet)" style="background: #e0f2fe; border-left: 1px solid #bae6fd !important;">
+                            <i class="fas fa-store" style="color: #0284c7; font-size: 1.1rem; transition: color 0.3s ease;" onmouseover="this.style.color='#0369a1'" onmouseout="this.style.color='#0284c7'"></i>
                         </button>
                     </div>
                     <input type="hidden" id="custId">
@@ -690,6 +698,191 @@
 </div>
 
 <div id="printArea" style="display: none;"></div>
+
+<!-- MODAL FORM NOO & PRINT AREA NOO -->
+<div id="nooModal" style="display:none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 10700; justify-content: center; align-items: center; flex-direction: column; backdrop-filter: blur(3px);">
+    <div style="background: #f8fafc; border-radius: 12px; width: 95%; max-width: 450px; max-height: 95vh; display: flex; flex-direction: column; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5); animation: popIn 0.3s ease-out;">
+        <!-- Header -->
+        <div class="d-flex justify-content-between align-items-center p-3" style="background: linear-gradient(135deg, #1e293b, #0f172a); color: white;">
+            <div class="d-flex align-items-center gap-2">
+                <div style="background: #d4af37; border-radius: 8px; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center;">
+                    <i class="fas fa-store text-dark"></i>
+                </div>
+                <div>
+                    <h6 class="m-0 fw-bold" style="font-size: 0.95rem;">Form Registrasi NOO</h6>
+                    <div style="font-size: 0.7rem; color: #fbbf24;">New Outlet Opening • Autocode</div>
+                </div>
+            </div>
+            <button class="btn-close btn-close-white" onclick="tutupFormNOO()"></button>
+        </div>
+        <!-- Body -->
+        <div class="p-3" style="overflow-y: auto; flex-grow: 1;">
+            <!-- Bagian 1 -->
+            <div class="card mb-3 border-0 shadow-sm rounded-3">
+                <div class="card-header bg-white border-bottom-0 pt-3 pb-0">
+                    <h6 class="fw-bold m-0" style="color: #0284c7; font-size: 0.85rem;"><i class="fas fa-id-card me-2"></i>IDENTITAS TOKO & PEMILIK</h6>
+                </div>
+                <div class="card-body">
+                    <div class="mb-2">
+                        <label class="form-label" style="font-size: 0.75rem; font-weight: 600; color: #475569;">Nama Toko <span class="text-danger">*</span></label>
+                        <div class="input-group input-group-sm">
+                            <span class="input-group-text bg-white border-end-0 text-muted"><i class="fas fa-store"></i></span>
+                            <input type="text" id="nooNamaToko" class="form-control border-start-0" placeholder="Contoh: Toko Berkah Jaya">
+                        </div>
+                    </div>
+                    <div class="mb-2">
+                        <label class="form-label" style="font-size: 0.75rem; font-weight: 600; color: #475569;">Nomor KTP Pemilik <span class="text-danger">*</span></label>
+                        <div class="input-group input-group-sm">
+                            <span class="input-group-text bg-white border-end-0 text-muted"><i class="far fa-id-card"></i></span>
+                            <input type="number" id="nooKtp" class="form-control border-start-0" placeholder="16 Digit NIK KTP">
+                        </div>
+                    </div>
+                    <div class="mb-2">
+                        <label class="form-label" style="font-size: 0.75rem; font-weight: 600; color: #475569;">Nomor NPWP Pemilik / Toko</label>
+                        <div class="input-group input-group-sm">
+                            <span class="input-group-text bg-white border-end-0 text-muted"><i class="fas fa-file-invoice"></i></span>
+                            <input type="text" id="nooNpwp" class="form-control border-start-0" placeholder="Nomor NPWP (Opsional)">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Bagian 2 -->
+            <div class="card mb-3 border-0 shadow-sm rounded-3">
+                <div class="card-header bg-white border-bottom-0 pt-3 pb-0">
+                    <h6 class="fw-bold m-0" style="color: #16a34a; font-size: 0.85rem;"><i class="fas fa-map-marked-alt me-2"></i>ALAMAT & KONTAK OUTLET</h6>
+                </div>
+                <div class="card-body">
+                    <div class="mb-2">
+                        <label class="form-label" style="font-size: 0.75rem; font-weight: 600; color: #475569;">Alamat Lengkap <span class="text-danger">*</span></label>
+                        <textarea id="nooAlamat" class="form-control form-control-sm" rows="2" placeholder="Jl. Temanggung Tilung Ruko 19 G&#10;Palangkaraya"></textarea>
+                    </div>
+                    <div class="row g-2 mb-2">
+                        <div class="col-6">
+                            <label class="form-label" style="font-size: 0.75rem; font-weight: 600; color: #475569;">Contact Person</label>
+                            <input type="text" id="nooCp" class="form-control form-control-sm" placeholder="Contoh: Bpk. BUDI">
+                        </div>
+                        <div class="col-6">
+                            <label class="form-label" style="font-size: 0.75rem; font-weight: 600; color: #475569;">Type Outlet</label>
+                            <select id="nooType" class="form-select form-select-sm">
+                                <option value="Toko / Retail">Toko / Retail</option>
+                                <option value="Grosir">Grosir</option>
+                                <option value="Apotek / Klinik">Apotek / Klinik</option>
+                                <option value="Modern Market">Modern Market</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mb-2">
+                        <label class="form-label" style="font-size: 0.75rem; font-weight: 600; color: #475569;">Nomor HP / WhatsApp <span class="text-danger">*</span></label>
+                        <div class="input-group input-group-sm">
+                            <span class="input-group-text bg-white border-end-0 text-success"><i class="fab fa-whatsapp"></i></span>
+                            <input type="number" id="nooHp" class="form-control border-start-0" placeholder="0813 5152 2800">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bagian 3 -->
+            <div class="card mb-3 border-0 shadow-sm rounded-3">
+                <div class="card-header bg-white border-bottom-0 pt-3 pb-0">
+                    <h6 class="fw-bold m-0" style="color: #d97706; font-size: 0.85rem;"><i class="fas fa-coins me-2"></i>KETENTUAN TRANSAKSI & LIMIT</h6>
+                </div>
+                <div class="card-body">
+                    <div class="row g-2">
+                        <div class="col-5">
+                            <label class="form-label" style="font-size: 0.75rem; font-weight: 600; color: #475569;">TOP (Hari)</label>
+                            <div class="input-group input-group-sm">
+                                <input type="number" id="nooTop" class="form-control text-center text-primary fw-bold" value="0">
+                                <span class="input-group-text bg-light">Hari</span>
+                            </div>
+                        </div>
+                        <div class="col-7">
+                            <label class="form-label" style="font-size: 0.75rem; font-weight: 600; color: #475569;">Limit Kredit (Rp)</label>
+                            <input type="text" id="nooLimit" class="form-control form-control-sm text-end text-danger fw-bold" value="500.000" oninput="formatRupiahNOO(this)">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bagian 4 -->
+            <div class="card mb-3 border-0 shadow-sm rounded-3">
+                <div class="card-header bg-white border-bottom-0 pt-3 pb-0 d-flex justify-content-between align-items-center">
+                    <h6 class="fw-bold m-0" style="color: #0f172a; font-size: 0.85rem;"><i class="fas fa-camera me-2"></i>4. LAMPIRAN FOTO KTP</h6>
+                    <span style="font-size: 0.65rem; color: #64748b;"> Stanar ID Card</span>
+                </div>
+                <div class="card-body text-center">
+                    <div id="nooImgBox" class="border rounded-3 d-flex flex-column justify-content-center align-items-center position-relative overflow-hidden mb-2" style="border: 2px dashed #cbd5e1 !important; width: 100%; aspect-ratio: 85.6 / 53.98; cursor: pointer; background: #f8fafc;" onclick="document.getElementById('nooKtpInput').click()">
+                        <div id="nooPlaceholderContent" class="d-flex flex-column justify-content-center align-items-center p-2 text-center">
+                            <i class="fas fa-cloud-upload-alt text-primary mb-1" style="font-size: 1.6rem;"></i>
+                            <span class="fw-bold text-dark" style="font-size: 0.75rem;">Ketuk untuk Pilih Foto KTP</span>
+                            <span class="text-muted" style="font-size: 0.65rem;">Format JPG/PNG • Rasio Asli ID Card</span>
+                        </div>
+                        <img id="nooKtpPreview" src="" style="display: none; width: 100%; height: 100%; object-fit: contain; position: absolute; top: 0; left: 0; background: #000;">
+                    </div>
+                    <div class="d-flex gap-2">
+                        <button type="button" class="btn btn-outline-primary btn-sm flex-fill fw-bold" onclick="document.getElementById('nooKtpInput').click()"><i class="fas fa-folder-open me-1"></i> Galeri</button>
+                        <button type="button" class="btn btn-outline-success btn-sm flex-fill fw-bold" onclick="document.getElementById('nooKtpCameraInput').click()"><i class="fas fa-camera me-1"></i> Kamera</button>
+                    </div>
+                    <input type="file" id="nooKtpInput" accept="image/*" style="display: none;" onchange="previewNooKtp(this)">
+                    <input type="file" id="nooKtpCameraInput" accept="image/*" capture="environment" style="display: none;" onchange="previewNooKtp(this)">
+                </div>
+            </div>
+        </div>
+        <!-- Footer -->
+        <div class="p-3 bg-white border-top d-flex gap-2">
+            <button class="btn btn-secondary fw-bold flex-fill py-2 shadow-sm" style="border-radius: 8px; font-size: 0.9rem;" onclick="tutupFormNOO()"><i class="fas fa-times me-1"></i> Batal</button>
+            <button class="btn btn-success fw-bold flex-fill py-2 shadow-sm" style="border-radius: 8px; font-size: 0.9rem; background: #16a34a;" onclick="simpanKirimNOO()"><i class="fas fa-file-pdf me-1"></i> Simpan & Kirim PDF NOO</button>
+        </div>
+    </div>
+</div>
+
+<!-- PRINT NOO AREA (HIDDEN) -->
+<div id="printNooArea" style="display: none;">
+    <div style="font-family: 'Helvetica', Arial, sans-serif; font-size: 11px; padding: 10mm 4mm; color: #000; background: #fff; width: 202mm; height: 297mm; box-sizing: border-box; position: relative; overflow: hidden;">
+        <div style="background-color: #e5e7eb; padding: 10px; text-align: center; border: 2px solid #000; font-weight: bold; font-size: 15px; margin-bottom: 15px; text-transform: uppercase;">
+            FORMULIR NEW OPEN OUTLET (NOO)
+        </div>
+        
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px;">
+            <!-- Left side Data -->
+            <div style="width: 54%;">
+                <table style="width: 100%; border-collapse: collapse; font-size: 11px;">
+                    <tr><td style="padding: 5px 3px; width: 130px; font-weight: bold;">Nama Toko</td><td style="padding: 5px 3px;">: <span id="pdfNooNamaTokoLabel"></span></td></tr>
+                    <tr><td style="padding: 5px 3px; font-weight: bold;">Nomor KTP Pemilik</td><td style="padding: 5px 3px;">: <span id="pdfNooKtpLabel"></span></td></tr>
+                    <tr><td style="padding: 5px 3px; font-weight: bold;">Nomor NPWP</td><td style="padding: 5px 3px;">: <span id="pdfNooNpwpLabel"></span></td></tr>
+                    <tr><td style="padding: 5px 3px; font-weight: bold;">Alamat Lengkap</td><td style="padding: 5px 3px;">: <span id="pdfNooAlamatLabel"></span></td></tr>
+                    <tr><td style="padding: 5px 3px; font-weight: bold;">Contact Person</td><td style="padding: 5px 3px;">: <span id="pdfNooCpLabel"></span></td></tr>
+                    <tr><td style="padding: 5px 3px; font-weight: bold;">Nomor HP / WhatsApp</td><td style="padding: 5px 3px;">: <span id="pdfNooHpLabel"></span></td></tr>
+                    <tr><td style="padding: 5px 3px; font-weight: bold;">Type Outlet</td><td style="padding: 5px 3px;">: <span id="pdfNooTypeLabel"></span></td></tr>
+                    <tr><td style="padding: 5px 3px; font-weight: bold;">TOP (Hari)</td><td style="padding: 5px 3px;">: <span id="pdfNooTopLabel"></span> Hari</td></tr>
+                    <tr><td style="padding: 5px 3px; font-weight: bold;">Limit Kredit</td><td style="padding: 5px 3px;">: Rp <span id="pdfNooLimitLabel"></span></td></tr>
+                </table>
+            </div>
+            <!-- Right side KTP (Shifted left / perfectly fitted) -->
+            <div style="width: 44%; text-align: center; padding-top: 2px;">
+                <div style="margin-bottom: 6px; font-weight: bold; font-size: 11px;">FOTO KTP PEMILIK</div>
+                <div style="border: 1.5px solid #000; width: 100%; max-width: 80mm; aspect-ratio: 85.6 / 53.98; display: flex; align-items: center; justify-content: center; overflow: hidden; margin: 0 auto; background: #fff; position: relative; box-sizing: border-box;">
+                    <img id="pdfNooImgKtpFile" src="" style="width: 100%; height: 100%; object-fit: contain; display: none;" />
+                    <span id="pdfNooImgPlaceholder" style="font-size: 10px; color: #666;">Tidak ada lampiran foto</span>
+                </div>
+            </div>
+        </div>
+        
+        <div style="border-bottom: 2px solid #000; margin-top: 15px; margin-bottom: 15px;"></div>
+        
+        <div style="display: flex; justify-content: space-between; margin-top: 20px; text-align: center;">
+            <div style="width: 35%;">
+                <div style="margin-bottom: 50px;">Dibuat Oleh,</div>
+                <div style="text-decoration: underline; font-weight: bold;">( <span id="pdfNooSalesName">Salesman</span> )</div>
+            </div>
+            <div style="width: 35%;">
+                <div style="margin-bottom: 50px;">Disetujui Oleh,</div>
+                <div style="text-decoration: underline; font-weight: bold;">( ......................................... )</div>
+                <div style="font-size: 10px; margin-top: 2px;">Pimpinan / Admin</div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <script>
     let masterProduk = [];
@@ -3406,7 +3599,145 @@ function adminGenerateActivationCode() {
     resEl.style.display = 'block';
     resEl.innerHTML = `Request: <b>${req.toUpperCase()}</b><br>🔑 Kode Aktivasi Resmi: <span class="fs-4 text-warning fw-bold text-mono d-block mt-1">${actCode}</span>`;
 }
- // === TAMBAHKAN KODE OTOMATIS DI SINI ===
+ function formatRupiahNOO(elem) {
+    let val = elem.value.replace(/[^0-9]/g, '');
+    if(val !== '') {
+        elem.value = parseInt(val).toLocaleString('id-ID');
+    } else {
+        elem.value = '0';
+    }
+}
+
+function bukaFormNOO() {
+    let t = document.getElementById('custSearch').value.trim();
+    if(t && !document.getElementById('nooNamaToko').value) document.getElementById('nooNamaToko').value = t;
+    document.getElementById('nooModal').style.display = 'flex';
+}
+
+function tutupFormNOO() {
+    document.getElementById('nooModal').style.display = 'none';
+}
+
+function previewNooKtp(input) {
+    let file = input.files[0];
+    let preview = document.getElementById('nooKtpPreview');
+    let placeholder = document.getElementById('nooPlaceholderContent');
+    if (file) {
+        let reader = new FileReader();
+        reader.onload = function(e) {
+            preview.src = e.target.result;
+            preview.style.display = 'block';
+            if(placeholder) placeholder.style.display = 'none';
+        };
+        reader.readAsDataURL(file);
+    }
+}
+
+function simpanKirimNOO() {
+    let nNama = document.getElementById('nooNamaToko').value.trim();
+    let nKtp = document.getElementById('nooKtp').value.trim();
+    let nHp = document.getElementById('nooHp').value.trim();
+    let nAlamat = document.getElementById('nooAlamat').value.trim();
+
+    if(!nNama || !nKtp || !nHp || !nAlamat) {
+        artAlert("Harap isi semua kolom wajib yang bertanda (*)");
+        return;
+    }
+
+    document.getElementById('pdfNooNamaTokoLabel').innerText = nNama;
+    document.getElementById('pdfNooKtpLabel').innerText = nKtp;
+    document.getElementById('pdfNooNpwpLabel').innerText = document.getElementById('nooNpwp').value || '-';
+    document.getElementById('pdfNooAlamatLabel').innerText = nAlamat;
+    document.getElementById('pdfNooCpLabel').innerText = document.getElementById('nooCp').value || '-';
+    document.getElementById('pdfNooHpLabel').innerText = nHp;
+    document.getElementById('pdfNooTypeLabel').innerText = document.getElementById('nooType').value;
+    document.getElementById('pdfNooTopLabel').innerText = document.getElementById('nooTop').value || '0';
+    document.getElementById('pdfNooLimitLabel').innerText = document.getElementById('nooLimit').value || '0';
+
+    let ktpSrc = document.getElementById('nooKtpPreview').src;
+    let pdfImg = document.getElementById('pdfNooImgKtpFile');
+    let pdfPlaceholder = document.getElementById('pdfNooImgPlaceholder');
+    if (ktpSrc && document.getElementById('nooKtpPreview').style.display !== 'none') {
+        pdfImg.src = ktpSrc;
+        pdfImg.style.display = 'block';
+        pdfPlaceholder.style.display = 'none';
+    } else {
+        pdfImg.style.display = 'none';
+        pdfPlaceholder.style.display = 'block';
+    }
+
+    let sid = document.getElementById('salesId').value.trim();
+    let salesmanName = sid;
+    if(window.registeredSales) {
+        let found = registeredSales.find(s => s.code === sid);
+        if(found) salesmanName = found.name;
+    }
+    document.getElementById('pdfNooSalesName').innerText = salesmanName;
+
+    let printContainer = document.getElementById('printNooArea');
+    printContainer.style.cssText = "display: block !important; background: white; color: black; width: 210mm; min-height: 297mm; position: relative; z-index: 99999;";
+    
+    let mainApp = document.getElementById('mainApp');
+    let originalDisplay = mainApp.style.cssText;
+    mainApp.style.cssText = "display: none !important;";
+
+    let fileName = `NOO_${nNama.replace(/[^a-zA-Z0-9]/g, '_')}_${Date.now()}.pdf`;
+
+    html2pdf().set({
+        margin: [10, 2, 10, 2],
+        filename: fileName,
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2, useCORS: true, scrollY: 0 },
+        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+    }).from(printContainer).outputPdf('blob').then(pdfBlob => {
+        printContainer.style.cssText = "display: none !important;";
+        mainApp.style.cssText = originalDisplay;
+        
+        let file = new File([pdfBlob], fileName, { type: 'application/pdf' });
+        
+            // OTOMATIS TAMBAHKAN KE MASTER CUSTOMER
+    let newCustCode = "NOO" + Math.floor(1000 + Math.random() * 9000);
+    let newTopVal = parseInt(document.getElementById('nooTop').value) || 0;
+    let newCustomerObj = {
+        kode: newCustCode,
+        nama: nNama,
+        alamat: nAlamat,
+        top: newTopVal
+    };
+
+    if (typeof masterCustomer === 'undefined') masterCustomer = [];
+    masterCustomer.unshift(newCustomerObj);
+    try {
+        localStorage.setItem('artsoft_masterCust', JSON.stringify(masterCustomer));
+        initCustomerAutocomplete();
+    } catch(e) {}
+
+    // Otomatis pilih toko yang baru diregistrasikan ke form order utama
+    document.getElementById('custId').value = newCustCode;
+    document.getElementById('custSearch').value = nNama;
+    document.getElementById('custDetail').innerText = `${newCustCode} | ${nAlamat}`;
+    document.getElementById('inputTop').value = newTopVal;
+    generateOrderNo();
+        tutupFormNOO();
+
+        if (navigator.canShare && navigator.canShare({ files: [file] })) {
+            navigator.share({ files: [file], title: 'Dokumen NOO Baru', text: `Berikut lampiran form NOO untuk outlet: ${nNama}` }).catch(() => {
+                let link = document.createElement('a'); link.href = URL.createObjectURL(pdfBlob); link.download = fileName;
+                document.body.appendChild(link); link.click(); document.body.removeChild(link);
+            });
+        } else {
+            let link = document.createElement('a'); link.href = URL.createObjectURL(pdfBlob); link.download = fileName;
+            document.body.appendChild(link); link.click(); document.body.removeChild(link);
+            artAlert("PDF NOO Berhasil Diunduh!");
+        }
+    }).catch(() => {
+        printContainer.style.cssText = "display: none !important;";
+        mainApp.style.cssText = originalDisplay;
+        artAlert("Gagal membuat PDF NOO.");
+    });
+}
+
+// === TAMBAHKAN KODE OTOMATIS DI SINI ===
 document.addEventListener("DOMContentLoaded", function() {
     document.querySelectorAll('input, textarea').forEach(element => {
         element.setAttribute('autocomplete', 'off');
